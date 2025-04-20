@@ -76,8 +76,6 @@
       display: flex;
       list-style: none;
       gap: 2rem;
-      margin: 0;
-      padding: 0;
     }
     .nav-menu a {
       font-weight: 500;
@@ -94,33 +92,241 @@
     }
     .book-now-btn:hover { background: var(--primary-hover); }
 
+    /* Hamburger icon for mobile */
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
     /* Mobile Styles */
     @media screen and (max-width: 768px) {
       .nav-menu {
-        display: flex;
-        flex-wrap: wrap; /* Allow the items to wrap in mobile */
-        gap: 1rem; /* Shrink the gap to fit better */
-        justify-content: space-evenly; /* Center the menu options */
+        display: none; /* Hide the regular menu */
+        flex-direction: column;
         background-color: var(--bg-white);
-        padding: 1rem;
+        position: fixed;
+        top: 90px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%); /* Hide the menu initially */
+        z-index: 999;
       }
 
       .nav-menu li {
-        padding: 0.5rem;
+        padding: 1rem;
         text-align: center;
-        width: auto; /* Allow the items to shrink */
-        border-bottom: none; /* Remove any border */
+        width: 100%;
+        border-bottom: 1px solid #e0e0e0;
       }
 
-      .book-now-btn {
-        margin-top: 1rem;
-        width: auto;
+      .nav-menu.active {
+        transform: translateY(0); /* Slide in the menu */
       }
 
-      /* Hide Hamburger Icon on Mobile */
+      /* Show hamburger icon on mobile */
       .hamburger {
-        display: none;
+        display: block;
       }
+    }
+
+    /* ========== Floating Sidebar Logo ========== */
+    .floating-logo {
+      position: fixed; bottom: 0.5rem; right: 0.5rem;
+      opacity: 0.7; z-index: 1001;
+    }
+    .floating-logo img { height: 102px; width: auto; }
+
+    /* ========== Hero Carousel Section ========== */
+    .hero {
+      aspect-ratio: 16/9; height: 55vh; position: relative;
+      overflow: hidden;
+    }
+    .hero-slider {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .slide {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0; transition: opacity 1s ease-in-out;
+      background-color: #000; background-position: center;
+      background-size: cover; background-repeat: no-repeat;
+    }
+    .slide.active { opacity: 1; }
+    .slide img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .slide:nth-child(1) img  { object-position: center 75%; }
+    .slide:nth-child(4) img  { object-position: center 50%; }
+    .slide:nth-child(6) img  { object-position: center 40%; }
+    .slide:nth-child(10) img { object-position: center 60%; }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex; align-items: center;
+      justify-content: center; text-align: center;
+      color: var(--text-light); padding: 0 1rem;
+    }
+    .hero-content h1 {
+      font-size: 2.2rem; margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .hero-content p {
+      font-size: 1.1rem; margin-bottom: 1.5rem;
+    }
+    .scroll-indicator {
+      position: absolute; bottom: 20px; left: 50%;
+      transform: translateX(-50%); cursor: pointer;
+      z-index: 2;
+    }
+    .scroll-indicator .arrow {
+      width: 24px; height: 24px;
+      fill: var(--text-light);
+      animation: bounceDown 2s infinite;
+    }
+    @keyframes bounceDown {
+      0%,20%,50%,80%,100% { transform: translateY(0); }
+      40% { transform: translateY(10px); }
+      60% { transform: translateY(5px); }
+    }
+
+    /* ========== Reservation Section ========== */
+    .reservation {
+      background: var(--bg-white); text-align: center;
+    }
+    .reservation h2 {
+      font-size: 2rem; margin-bottom: 0.5rem;
+    }
+    .reservation p {
+      font-size: 1.1rem; margin-bottom: 2rem;
+      color: #666;
+    }
+    .wheelbase-wrapper {
+      max-width: 1200px; margin: 0 auto;
+      padding: 1rem; background: var(--bg-white);
+      border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    #outdoorsy-book-now-container {
+      width: 100%; min-height: 500px;
+    }
+
+    /* ========== Promo Video Section ========== */
+    .promo-video {
+      background: #000; color: var(--text-light);
+      text-align: center;
+    }
+    .promo-video h2 {
+      font-size: 2rem; margin-bottom: 1rem;
+    }
+    .video-container {
+      position: relative; padding-bottom: 56.25%;
+      height: 0; margin: 0 auto; max-width: 1000px;
+    }
+    .video-container iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+    }
+    .shoutout-glow {
+      margin-top: 2rem; font-size: 1rem;
+      font-weight: 700;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      0%   { text-shadow: 0 0 5px #fff; }
+      100% { text-shadow: 0 0 15px #00ffc3; }
+    }
+
+    /* ========== Reviews Section ========== */
+    .reviews {
+      background: var(--bg-white); text-align: center;
+    }
+    .reviews h2 {
+      font-size: 2rem; margin-bottom: 1rem;
+    }
+    .reviews-container {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 2rem;
+      margin-top: 2rem;
+    }
+    .review-card {
+      background: #f5f5f5; padding: 1.5rem;
+      border-radius: 8px; flex: 1 1 280px;
+      max-width: 280px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .review-card .stars {
+      color: #FFD700; font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .review-card p {
+      font-style: italic; margin-bottom: 0.5rem;
+      color: #666;
+    }
+    .review-card span { font-weight: 600; }
+
+    /* ========== Social & Subscribe Section ========== */
+    .social-subscribe {
+      background: var(--bg-white); text-align: center;
+    }
+    .social-media, .subscribe { margin: 1rem 0; }
+    .social-media h2, .subscribe h2 {
+      font-size: 1.5rem; margin-bottom: 1rem;
+    }
+    .instagram-feed p {
+      font-size: 1rem; color: #666;
+    }
+    .instagram-feed a {
+      color: var(--primary); font-weight: 600;
+    }
+    .instagram-feed a:hover {
+      text-decoration: underline;
+    }
+    #instafeed {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem; margin-top: 1rem;
+    }
+    #instafeed a {
+      width: 100%; height: 150px; overflow: hidden;
+    }
+    #instafeed img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .subscribe-form { margin-top: 1rem; }
+    .subscribe-form input[type="email"] {
+      width: 70%; padding: 0.75rem;
+      border: 1px solid #ccc; border-radius: 4px;
+      margin-bottom: 1rem; font-size: 1rem;
+    }
+    .subscribe-form button {
+      padding: 0.75rem 1.5rem; border: none;
+      background: var(--primary); color: var(--bg-white);
+      border-radius: 4px; cursor: pointer;
+      font-weight: 600; transition: background 0.3s ease;
+    }
+    .subscribe-form button:hover {
+      background: var(--primary-hover);
+    }
+
+    /* ========== Footer ========== */
+    footer {
+      background: var(--bg-white); text-align: center;
+      padding: 1rem; font-size: 0.9rem;
+      color: #777; border-top: 1px solid #eee;
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 1.8rem; }
+      .hero-content p  { font-size: 1rem; }
+      .reviews-container { flex-direction: column; }
     }
   </style>
 </head>
@@ -136,8 +342,12 @@
       <div class="logo">
         <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Logo"></a>
       </div>
+      
+      <!-- Hamburger Icon for Mobile -->
+      <div class="hamburger" id="hamburger-icon">
+        &#9776;
+      </div>
 
-      <!-- Regular Nav Menu -->
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#hero">Home</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -283,5 +493,24 @@
     </div>
   </footer>
 
+  <!-- ========== JavaScript ========== -->
+  <script>
+    // Hero Carousel
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
+
+    // Toggle the hamburger menu on mobile
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const navMenu = document.getElementById('nav-menu');
+    hamburgerIcon.addEventListener('click', () => {
+      hamburgerIcon.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
