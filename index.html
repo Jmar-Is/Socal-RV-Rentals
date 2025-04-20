@@ -99,47 +99,40 @@
       cursor: pointer;
     }
 
-    /* ----------------------------------------
-   Mobile Styles: horizontal, shrunk menu
-   ---------------------------------------- */
-@media screen and (max-width: 768px) {
-  /* Hide hamburger icon */
-  .hamburger {
-    display: none !important;
-  }
-
-  /* Force nav‑menu visible and horizontal */
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+  /* Hide the regular nav‑menu until tapped */
   .nav-menu {
-    display: flex !important;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    display: none;              /* start hidden */
+    flex-direction: column;
+    position: absolute;
+    top: 90px;                  /* right below your header */
+    right: 1rem;                /* align under the hamburger */
     background: var(--bg-white);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;         /* shrink height to fit */
-    padding: 0 0.5rem;    /* tighten side padding */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transform: none !important;  /* override slide‑in */
-    z-index: 1000;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 999;
   }
 
+  /* When hamburger is active, show it as a dropdown */
+  .nav-menu.active {
+    display: flex;
+  }
+
+  /* Tidy up each link */
   .nav-menu li {
-    padding: 0;           /* remove extra vertical padding */
-    border: none;         /* no dividers */
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: right;
+  }
+  .nav-menu li:last-child {
+    border-bottom: none;
   }
 
-  .nav-menu a,
-  .book-now-btn {
-    font-size: 0.85rem;   /* shrink text */
-    padding: 0.5rem 0;    /* tighter click area */
-  }
-
-  /* Push page content down so it’s not hidden under the fixed menu */
-  body {
-    padding-top: calc(90px + 60px);
+  /* Keep hamburger visible */
+  .hamburger {
+    display: block;
   }
 }
 
