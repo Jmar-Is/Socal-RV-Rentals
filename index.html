@@ -76,6 +76,8 @@
       display: flex;
       list-style: none;
       gap: 2rem;
+      margin: 0;
+      padding: 0;
     }
     .nav-menu a {
       font-weight: 500;
@@ -96,37 +98,26 @@
     @media screen and (max-width: 768px) {
       .nav-menu {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap; /* Allow the items to wrap in mobile */
+        gap: 1rem; /* Shrink the gap to fit better */
+        justify-content: space-evenly; /* Center the menu options */
         background-color: var(--bg-white);
-        position: fixed;
-        top: 90px;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        z-index: 999;
-        padding-top: 1rem;
-        gap: 1.5rem;
+        padding: 1rem;
       }
 
       .nav-menu li {
+        padding: 0.5rem;
         text-align: center;
-        width: 100%;
-        padding: 1rem 0;
-        border-bottom: 1px solid #e0e0e0;
-      }
-
-      .nav-menu li:last-child {
-        border-bottom: none;
+        width: auto; /* Allow the items to shrink */
+        border-bottom: none; /* Remove any border */
       }
 
       .book-now-btn {
         margin-top: 1rem;
-        width: 100%;
+        width: auto;
       }
 
-      /* Hide Hamburger Icon */
+      /* Hide Hamburger Icon on Mobile */
       .hamburger {
         display: none;
       }
@@ -145,7 +136,7 @@
       <div class="logo">
         <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Logo"></a>
       </div>
-      
+
       <!-- Regular Nav Menu -->
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#hero">Home</a></li>
@@ -179,6 +170,9 @@
       <div class="hero-content">
         <h1>Take the Road Less Traveled</h1>
         <p>Discover new horizons with Socal RV Rentals—your ticket to adventure.</p>
+      </div>
+      <div class="scroll-indicator" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">
+        <svg class="arrow" width="24" height="24" viewBox="0 0 24 24"><path fill="#fff" d="M12 16l-6-6h12z"/></svg>
       </div>
     </div>
   </section>
@@ -291,4 +285,3 @@
 
 </body>
 </html>
-
