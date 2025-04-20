@@ -16,9 +16,7 @@
   
   <style>
     /* ========== Base Font-Size Bump (15% larger text) ========== */
-    html {
-      font-size: 115%;
-    }
+    html { font-size: 115%; }
 
     /* ========== CSS Variables ========== */
     :root {
@@ -31,11 +29,7 @@
     }
     
     /* ========== Global Styles ========== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       color: var(--text-dark);
@@ -43,21 +37,11 @@
       line-height: 1.6;
       padding-top: 90px; /* space for 90px header */
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
     
     /* ========== Section Layout ========== */
-    .section {
-      width: 100%;
-      padding: 4rem 1rem;
-    }
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .section { width: 100%; padding: 4rem 1rem; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
     
     /* ========== Navigation Bar ========== */
     header {
@@ -79,22 +63,14 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-    .navbar .logo img {
-      height: 80px; /* increased from 60px */
-      width: auto;
-    }
+    .navbar .logo img { height: 80px; width: auto; }
     .nav-menu {
       display: flex;
       list-style: none;
       gap: 2rem;
     }
-    .nav-menu a {
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .nav-menu a:hover {
-      color: var(--primary);
-    }
+    .nav-menu a { font-weight: 500; transition: color 0.3s ease; }
+    .nav-menu a:hover { color: var(--primary); }
     .book-now-btn {
       padding: 0.5rem 1rem;
       border-radius: 4px;
@@ -103,9 +79,7 @@
       font-weight: 600;
       transition: background 0.3s ease;
     }
-    .book-now-btn:hover {
-      background: var(--primary-hover);
-    }
+    .book-now-btn:hover { background: var(--primary-hover); }
 
     /* ========== Floating Logo (bottom-right) ========== */
     .floating-logo {
@@ -115,10 +89,7 @@
       opacity: 0.7;
       z-index: 1001;
     }
-    .floating-logo img {
-      height: 102px; /* reverted back to post-first-boost size */
-      width: auto;
-    }
+    .floating-logo img { height: 102px; width: auto; }
     
     /* ========== Hero Section: Our Story ========== */
     .hero-about {
@@ -236,41 +207,20 @@
     
     /* ========== Responsive ========== */
     @media (max-width: 768px) {
-      .hero-about h1 {
-        font-size: 2rem;
-      }
-      .team-member {
-        max-width: 100%;
-      }
+      .hero-about h1 { font-size: 2rem; }
+      .team-member { max-width: 100%; }
     }
   </style>
 </head>
 <body>
+  <!-- ← Here’s the only added line: -->
+  <div id="site-nav"></div>
+
   <!-- Floating logo -->
   <div class="floating-logo">
     <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Socal RV Rentals Logo">
   </div>
 
-  <!-- ========== Header / Navbar ========== -->
-  <header>
-    <div class="navbar container">
-      <div class="logo">
-        <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Socal RV Rentals Logo"></a>
-      </div>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#" class="active">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="places.html">Places to Go</a></li>
-        <li>
-          <a href="https://checkout.wheelbasepro.com/reserve?owner_id=518075" target="_blank" class="book-now-btn">
-            Book Now
-          </a>
-        </li>
-      </ul>
-    </div>
-  </header>
-  
   <!-- ========== Hero Section: Our Story ========== -->
   <section class="hero-about fade-section">
     <div class="hero-content">
@@ -336,5 +286,26 @@
       fadeObserver.observe(el);
     });
   </script>
+
+  <!-- ← And here’s the new nav‑loader script: -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/nav.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('site-nav').innerHTML = html;
+          // re‑attach your hamburger toggle
+          const hamburger = document.getElementById('hamburger-icon');
+          const navMenu   = document.getElementById('nav-menu');
+          hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+          });
+        })
+        .catch(err => console.error('Failed to load nav:', err));
+    });
+  </script>
+</body>
+</html>
+
 </body>
 </html>
