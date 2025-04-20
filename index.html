@@ -71,7 +71,7 @@
     }
     .navbar .logo img { height: 80px; width: auto; }
 
-    /* Normal Nav Menu */
+    /* Regular Nav Menu */
     .nav-menu {
       display: flex;
       list-style: none;
@@ -110,6 +110,8 @@
         right: 0;
         width: 100%;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%); /* Hide the menu initially */
       }
 
       .nav-menu li {
@@ -123,8 +125,9 @@
         display: block;
       }
 
+      /* Menu visibility when active */
       .hamburger.active + .nav-menu {
-        display: flex; /* Show the menu when hamburger is active */
+        transform: translateX(0); /* Slide in the menu */
       }
     }
 
@@ -502,6 +505,7 @@
     const hamburgerIcon = document.getElementById('hamburger-icon');
     const navMenu = document.getElementById('nav-menu');
     hamburgerIcon.addEventListener('click', () => {
+      hamburgerIcon.classList.toggle('active');  // Optional: Toggle hamburger icon style
       navMenu.classList.toggle('active');
     });
   </script>
