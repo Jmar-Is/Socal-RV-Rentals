@@ -102,35 +102,29 @@
     /* Mobile Styles */
     @media screen and (max-width: 768px) {
       .nav-menu {
-        display: none; /* Hide the regular menu */
-        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
         background-color: var(--bg-white);
-        position: fixed;
-        top: 90px;
-        left: 0;
-        right: 0;
+        padding: 1rem;
         width: 100%;
-        height: 100%;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease-in-out;
-        transform: translateY(-100%); /* Hide the menu initially */
-        z-index: 999;
+        gap: 1rem;
       }
 
       .nav-menu li {
-        padding: 1rem;
+        padding: 0.5rem;
         text-align: center;
-        width: 100%;
-        border-bottom: 1px solid #e0e0e0;
+        width: auto;  /* Allowing items to shrink */
       }
 
-      .nav-menu.active {
-        transform: translateY(0); /* Slide in the menu */
+      .book-now-btn {
+        margin-top: 1rem;
+        width: auto;
       }
 
-      /* Show hamburger icon on mobile */
+      /* Hide Hamburger Icon */
       .hamburger {
-        display: block;
+        display: none;
       }
     }
 
@@ -343,11 +337,7 @@
         <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Logo"></a>
       </div>
       
-      <!-- Hamburger Icon for Mobile -->
-      <div class="hamburger" id="hamburger-icon">
-        &#9776;
-      </div>
-
+      <!-- Regular Nav Menu -->
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#hero">Home</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -493,24 +483,5 @@
     </div>
   </footer>
 
-  <!-- ========== JavaScript ========== -->
-  <script>
-    // Hero Carousel
-    const slides = document.querySelectorAll('.slide');
-    let current = 0;
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 4000);
-
-    // Toggle the hamburger menu on mobile
-    const hamburgerIcon = document.getElementById('hamburger-icon');
-    const navMenu = document.getElementById('nav-menu');
-    hamburgerIcon.addEventListener('click', () => {
-      hamburgerIcon.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-  </script>
 </body>
 </html>
