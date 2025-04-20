@@ -107,6 +107,50 @@
       background: var(--primary-hover);
     }
 
+      /* Hamburger icon for mobile */
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+  /* Hide the regular nav‑menu until tapped */
+  .nav-menu {
+    display: none;              /* start hidden */
+    flex-direction: column;
+    position: absolute;
+    top: 90px;                  /* right below your header */
+    right: 1rem;                /* align under the hamburger */
+    background: var(--bg-white);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  /* When hamburger is active, show it as a dropdown */
+  .nav-menu.active {
+    display: flex;
+  }
+
+  /* Tidy up each link */
+  .nav-menu li {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: right;
+  }
+  .nav-menu li:last-child {
+    border-bottom: none;
+  }
+
+  /* Keep hamburger visible */
+  .hamburger {
+    display: block;
+  }
+}
+
     /* ========== Floating Logo (bottom-right) ========== */
     .floating-logo {
       position: fixed;
@@ -255,15 +299,21 @@
   <header>
     <div class="navbar container">
       <div class="logo">
-        <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Socal RV Rentals Logo"></a>
+        <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Logo"></a>
       </div>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#" class="active">About Us</a></li>
+      
+      <!-- Hamburger Icon for Mobile -->
+      <div class="hamburger" id="hamburger-icon">
+        &#9776;
+      </div>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="places.html">Places to Go</a></li>
         <li>
-          <a href="https://checkout.wheelbasepro.com/reserve?owner_id=518075" target="_blank" class="book-now-btn">
+          <a href="https://checkout.wheelbasepro.com/reserve?owner_id=518075" class="book-now-btn" target="_blank">
             Book Now
           </a>
         </li>
@@ -334,6 +384,14 @@
 
     document.querySelectorAll('.fade-section, .team-member').forEach(el => {
       fadeObserver.observe(el);
+    });
+    
+    // Toggle the hamburger menu on mobile
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const navMenu = document.getElementById('nav-menu');
+    hamburgerIcon.addEventListener('click', () => {
+      hamburgerIcon.classList.toggle('active');
+      navMenu.classList.toggle('active');
     });
   </script>
 </body>
