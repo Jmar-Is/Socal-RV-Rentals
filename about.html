@@ -61,28 +61,19 @@
     
     /* ========== Navigation Bar ========== */
     header {
-      width: 100%;
-      height: 90px; /* increased from 70px */
+      width: 100%; height: 90px;
       background: linear-gradient(135deg, var(--bg-white), #f9f9f9);
       border-bottom: 1px solid #e0e0e0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; z-index: 1000;
     }
     .navbar {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      height: 100%; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 1rem;
+      max-width: 1200px; margin: 0 auto;
     }
-    .navbar .logo img {
-      height: 80px; /* increased from 60px */
-      width: auto;
-    }
+    .navbar .logo img { height: 80px; width: auto; }
+
+    /* Regular Nav Menu */
     .nav-menu {
       display: flex;
       list-style: none;
@@ -92,9 +83,7 @@
       font-weight: 500;
       transition: color 0.3s ease;
     }
-    .nav-menu a:hover {
-      color: var(--primary);
-    }
+    .nav-menu a:hover { color: var(--primary); }
     .book-now-btn {
       padding: 0.5rem 1rem;
       border-radius: 4px;
@@ -103,11 +92,9 @@
       font-weight: 600;
       transition: background 0.3s ease;
     }
-    .book-now-btn:hover {
-      background: var(--primary-hover);
-    }
+    .book-now-btn:hover { background: var(--primary-hover); }
 
-      /* Hamburger icon for mobile */
+    /* Hamburger icon for mobile */
     .hamburger {
       display: none;
       font-size: 30px;
