@@ -99,34 +99,49 @@
       cursor: pointer;
     }
 
-    /* Mobile Styles */
-    @media screen and (max-width: 768px) {
-      .nav-menu {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        background-color: var(--bg-white);
-        padding: 1rem;
-        width: 100%;
-        gap: 1rem;
-      }
+    /* ----------------------------------------
+   Mobile Styles: horizontal, shrunk menu
+   ---------------------------------------- */
+@media screen and (max-width: 768px) {
+  /* Hide hamburger icon */
+  .hamburger {
+    display: none !important;
+  }
 
-      .nav-menu li {
-        padding: 0.5rem;
-        text-align: center;
-        width: auto;  /* Allowing items to shrink */
-      }
+  /* Force nav‑menu visible and horizontal */
+  .nav-menu {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--bg-white);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;         /* shrink height to fit */
+    padding: 0 0.5rem;    /* tighten side padding */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: none !important;  /* override slide‑in */
+    z-index: 1000;
+  }
 
-      .book-now-btn {
-        margin-top: 1rem;
-        width: auto;
-      }
+  .nav-menu li {
+    padding: 0;           /* remove extra vertical padding */
+    border: none;         /* no dividers */
+  }
 
-      /* Hide Hamburger Icon */
-      .hamburger {
-        display: none;
-      }
-    }
+  .nav-menu a,
+  .book-now-btn {
+    font-size: 0.85rem;   /* shrink text */
+    padding: 0.5rem 0;    /* tighter click area */
+  }
+
+  /* Push page content down so it’s not hidden under the fixed menu */
+  body {
+    padding-top: calc(90px + 60px);
+  }
+}
 
     /* ========== Floating Sidebar Logo ========== */
     .floating-logo {
@@ -337,7 +352,11 @@
         <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Logo"></a>
       </div>
       
-      <!-- Regular Nav Menu -->
+      <!-- Hamburger Icon for Mobile -->
+      <div class="hamburger" id="hamburger-icon">
+        &#9776;
+      </div>
+
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#hero">Home</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -483,5 +502,24 @@
     </div>
   </footer>
 
+  <!-- ========== JavaScript ========== -->
+  <script>
+    // Hero Carousel
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
+
+    // Toggle the hamburger menu on mobile
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const navMenu = document.getElementById('nav-menu');
+    hamburgerIcon.addEventListener('click', () => {
+      hamburgerIcon.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
