@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Responsive Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Socal RV Rentals | Places to Go & Festivals</title>
   
@@ -13,11 +14,10 @@
     rel="stylesheet">
   
   <style>
-    /* ========== Base Font–Size Bump (15% larger text) ========== */
-    html {
-      font-size: 115%;
-    }
+    /* ========== Base Font-Size Bump (15% larger text) ========== */
+    html { font-size: 115%; }
 
+    /* ========== CSS Variables ========== */
     :root {
       --primary: #00796B;
       --primary-hover: #00695B;
@@ -28,12 +28,12 @@
       --transition-speed: 0.3s;
     }
 
+    /* ========== Global Styles ========== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg-light);
@@ -41,13 +41,21 @@
       line-height: 1.6;
       padding-top: 90px; /* accommodate 90px header */
     }
-
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    /* ========== Containers & Sections ========== */
+    /* ========== Floating Sidebar Logo ========== */
+    .floating-logo {
+      position: fixed; bottom: 0.5rem; right: 0.5rem;
+      opacity: 0.7; z-index: 1001;
+    }
+    .floating-logo img {
+      height: 102px; width: auto;
+    }
+
+    /* ========== Section Layout ========== */
     .section {
       padding: 4rem 1rem;
     }
@@ -60,7 +68,7 @@
     /* ========== Navigation Bar ========== */
     header {
       width: 100%;
-      height: 90px; /* increased from 70px */
+      height: 90px;
       background: linear-gradient(135deg, var(--bg-white), #f9f9f9);
       border-bottom: 1px solid #e0e0e0;
       position: fixed;
@@ -78,7 +86,7 @@
       padding: 0 1rem;
     }
     .navbar .logo img {
-      height: 80px; /* increased from 60px */
+      height: 80px;
       width: auto;
     }
     .nav-menu {
@@ -88,7 +96,6 @@
     }
     .nav-menu a {
       font-weight: 500;
-      color: var(--text-dark);
       transition: color var(--transition-speed);
     }
     .nav-menu a:hover {
@@ -108,6 +115,54 @@
     }
     .book-now-btn:hover {
       background: var(--primary-hover);
+    }
+
+    /* Hamburger icon for mobile */
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 90px;
+        right: 1rem;
+        background: var(--bg-white);
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      .nav-menu li {
+        padding: 0.75rem 1.5rem;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: right;
+      }
+      .nav-menu li:last-child {
+        border-bottom: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* ========== Fade‑In Animation ========== */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     /* ========== Hero Section ========== */
@@ -228,7 +283,6 @@
     .festival-card:hover {
       transform: translateY(-5px);
     }
-    /* Placeholder card for logo */
     .festival-card.placeholder {
       background: transparent;
       box-shadow: none;
@@ -350,18 +404,6 @@
       border-top: 1px solid #eee;
     }
 
-    /* ========== Fade‑In Animation ========== */
-    .fade-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ========== Responsive ========== */
     @media (max-width: 768px) {
       .hero-places h1 {
         font-size: 2rem;
@@ -375,19 +417,25 @@
   </style>
 </head>
 <body>
+  <!-- Floating sidebar logo -->
+  <div class="floating-logo">
+    <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Socal RV Rentals Logo">
+  </div>
+
   <!-- ========== Header / Navbar ========== -->
   <header>
     <div class="navbar container">
       <div class="logo">
         <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Socal RV Rentals Logo"></a>
       </div>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
+      <div class="hamburger" id="hamburger-icon">&#9776;</div>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html#hero">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="places.html" class="active">Places to Go</a></li>
         <li>
-          <a href="https://checkout.wheelbasepro.com/reserve?owner_id=518075" target="_blank" class="book-now-btn">
+          <a href="https://checkout.wheelbasepro.com/reserve?owner_id=518075" class="book-now-btn" target="_blank">
             Book Now
           </a>
         </li>
@@ -534,7 +582,7 @@
     <div class="container">
       <h2>RV-Friendly Festivals &amp; Rave Events</h2>
       <div class="festivals-container">
-        <!-- Festival 1: Coachella -->
+        <!-- Festival 1: Coachella -->
         <div class="festival-card">
           <div class="fest-image">
             <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Coachella.jpeg" alt="Coachella Valley Music and Arts Festival">
@@ -552,7 +600,7 @@
             </div>
           </div>
         </div>
-        <!-- Festival 2: EDC Las Vegas -->
+        <!-- Festival 2: EDC Las Vegas -->
         <div class="festival-card">
           <div class="fest-image">
             <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/EDC.jpeg" alt="EDC Las Vegas">
@@ -570,7 +618,7 @@
             </div>
           </div>
         </div>
-        <!-- Festival 3: Lightning in a Bottle -->
+        <!-- Festival 3: Lightning in a Bottle -->
         <div class="festival-card">
           <div class="fest-image">
             <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/LIB.jpg" alt="Lightning in a Bottle">
@@ -588,7 +636,7 @@
             </div>
           </div>
         </div>
-        <!-- Festival 4: Burning Man -->
+        <!-- Festival 4: Burning Man -->
         <div class="festival-card">
           <div class="fest-image">
             <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Burning%20Man.jpg" alt="Burning Man">
@@ -606,7 +654,7 @@
             </div>
           </div>
         </div>
-        <!-- Festival 5: Psychedelic Circus USA -->
+        <!-- Festival 5: Psychedelic Circus USA -->
         <div class="festival-card">
           <div class="fest-image">
             <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Psychedelic%20Circus.jpg" alt="Psychedelic Circus USA">
@@ -617,14 +665,14 @@
               Embrace a Burner‑style experience along the Utah/Nevada border with tribal psytrance, workshops, and off‑grid camping.
             </p>
             <span class="accordion-toggle">Learn More</span>
-            <div class="accordion-content">
+            <div class="accordion-content">  
               <p><strong>Location:</strong> Utah/Nevada border (rotating).</p>
               <p><strong>Highlights:</strong> Tribal psytrance, immersive workshops, off‑grid vibes.</p>
               <p><strong>RV Tips:</strong> Camping is mandatory; RVs are encouraged.</p>
             </div>
           </div>
         </div>
-        <!-- Festival 6: Gem & Jam Festival -->
+        <!-- Festival 6: Gem & Jam Festival -->
         <div class="festival-card">
           <div class="fest-image">
             <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Gem%20%26%20Jam.jpg" alt="Gem &amp; Jam Festival">
@@ -642,7 +690,7 @@
             </div>
           </div>
         </div>
-        <!-- Festival 7: Nocturnal Wonderland -->
+        <!-- Festival 7: Nocturnal Wonderland -->
         <div class="festival-card">
           <div class="fest-image">
             <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Nocturnal%20Wonderland.jpeg" alt="Nocturnal Wonderland">
@@ -664,7 +712,7 @@
         <div class="festival-card placeholder">
           <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Logo Placeholder">
         </div>
-        <!-- Festival 8: Cascade Equinox Festival (now rightmost) -->
+        <!-- Festival 8: Cascade Equinox Festival -->
         <div class="festival-card">
           <div class="fest-image">
             <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Cascade.jpg" alt="Cascade Equinox Festival">
@@ -760,13 +808,14 @@
   </section>
 
   <!-- ========== Footer ========== -->
-  <footer class="fade-section">
+  <footer class="section fade-section">
     <div class="container">
       <p>&copy; 2025 Socal RV Rentals. Adventure awaits around every turn!</p>
     </div>
   </footer>
 
-  <!-- ========== JavaScript for Fade‑In & Accordion ========== -->
+  <!-- ========== JavaScript for Fade‑In, Accordion & Mobile Menu ==========
+       (IDENTICAL mobile toggle to index.html) -->
   <script>
     // Fade‑in on scroll
     document.querySelectorAll('.fade-section, .destination-card, .festival-card, .other-item')
@@ -781,6 +830,14 @@
       toggle.addEventListener('click', () => {
         toggle.nextElementSibling.classList.toggle('open');
       });
+    });
+
+    // Mobile hamburger toggle
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const navMenu = document.getElementById('nav-menu');
+    hamburgerIcon.addEventListener('click', () => {
+      hamburgerIcon.classList.toggle('active');
+      navMenu.classList.toggle('active');
     });
   </script>
 </body>
