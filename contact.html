@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Mobile Friendly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Socal RV Rentals | Contact Us</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" 
+    rel="stylesheet"
+  >
+  
+  <style>
+    /* ========== Base Font-Size Bump (15% larger text) ========== */
+    html {
+      font-size: 115%;
+    }
+
+    /* ========== CSS Variables ========== */
+    :root {
+      --primary: #00796B;
+      --primary-hover: #00695B;
+      --bg-light: #fafafa;
+      --bg-white: #fff;
+      --text-dark: #444;
+      --text-light: #fff;
+    }
+    
+    /* ========== Global Styles ========== */
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background: var(--bg-light);
+      line-height: 1.6;
+      padding-top: 90px; /* space for fixed header (now 90px tall) */
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* ========== Floating Sidebar Logo ========== */
+    .floating-logo {
+      position: fixed;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      opacity: 0.7;
+      z-index: 1001;
+    }
+    .floating-logo img {
+      height: 102px; /* matches About Us */
+      width: auto;
+    }
+
+    /* ========== Section Layout ========== */
+    .section {
+      width: 100%;
+      padding: 4rem 1rem;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* ========== Navigation Bar ========== */
+    header {
+      width: 100%;
+      height: 90px; /* increased from 70px */
+      background: linear-gradient(135deg, var(--bg-white), #f9f9f9);
+      border-bottom: 1px solid #e0e0e0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .navbar {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .navbar .logo img {
+      height: 80px; /* increased from 60px */
+      width: auto;
+    }
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    .nav-menu a {
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color 0.3s ease;
+    }
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+    .book-now-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      background: var(--primary);
+      color: var(--bg-white);
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .book-now-btn:hover {
+      background: var(--primary-hover);
+    }
+    
+    /* ========== Hero Section ========== */
+    .hero-contact {
+      background: url("Images/rv-photo-12.jpeg") no-repeat center 65%;
+      background-size: cover;
+      text-align: center;
+      color: var(--text-light);
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .hero-contact::before {
+      content: "";
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+    .hero-contact .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-contact h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero-contact p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    
+    /* ========== Contact Section ========== */
+    .contact-section {
+      background: var(--bg-white);
+    }
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    /* Left column: contact info */
+    .contact-info {
+      flex: 1 1 300px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .contact-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .contact-info p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #555;
+      line-height: 1.5;
+    }
+    .contact-info ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .contact-info li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .contact-info li i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    /* Right column: form */
+    .contact-form {
+      flex: 1 1 500px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .contact-form h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-form label {
+      font-weight: 500;
+      color: #555;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .contact-form input[type="text"]:focus,
+    .contact-form input[type="email"]:focus,
+    .contact-form textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+    .contact-form button {
+      align-self: flex-start;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background: var(--primary);
+      color: var(--bg-white);
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .contact-form button:hover {
+      background: var(--primary-hover);
+    }
+    .contact-info:hover,
+    .contact-form:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+    
+    /* ========== Fade-In on Scroll ========== */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    
+    /* ========== Footer ========== */
+    footer {
+      background: var(--bg-white);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #eee;
+    }
+    
+    /* ========== Responsive ========== */
+    @media (max-width: 768px) {
+      .hero-contact h1 { font-size: 2rem; }
+      .contact-container { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating sidebar logo -->
+  <div class="floating-logo">
+    <img src="images/Logo.png" alt="Socal RV Rentals Logo">
+  </div>
+
+  <!-- ========== Header / Navbar ========== -->
+  <header>
+    <div class="navbar container">
+      <div class="logo">
+        <a href="index.html"><img src="images/Logo.png" alt="Socal RV Rentals Logo"></a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="places.html">Places to Go</a></li>
+        <li>
+          <a href="https://checkout.wheelbasepro.com/reserve?owner_id=518075" target="_blank" class="book-now-btn">
+            Book Now
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  
+  <!-- ========== Hero Section ========== -->
+  <section class="hero-contact fade-section">
+    <div class="hero-content">
+      <h1>Get in Touch</h1>
+      <p>
+        We’re here to answer any questions or concerns you may have 
+        and make your RV rental experience smoother than ever!
+      </p>
+    </div>
+  </section>
+  
+  <!-- ========== Contact Section ========== -->
+  <section class="contact-section fade-section">
+    <div class="container">
+      <div class="contact-container">
+        <!-- Left: Contact Info -->
+        <div class="contact-info">
+          <h2>Reach Us</h2>
+          <p>
+            Whether you’re planning your first RV adventure or you’re a seasoned traveler, 
+            we’d love to hear from you. Feel free to reach out with any questions, 
+            feedback, or just to say hello!
+          </p>
+          <ul>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Chino, CA 91710</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span><a href="mailto:socalrvrentals909@gmail.com">socalrvrentals909@gmail.com</a></span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <span><a href="tel:+19098214953">(909) 821-4953</a></span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Right: Contact Form -->
+        <div class="contact-form">
+          <h2>Message Us</h2>
+          <form action="mailto:socalrvrentals909@gmail.com" method="POST" enctype="text/plain">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name" />
+            
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email address" />
+            
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help"></textarea>
+            
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ========== Footer ========== -->
+  <footer class="fade-section">
+    <div class="container">
+      <p>&copy; 2025 Socal RV Rentals. Your next journey starts here!</p>
+    </div>
+  </footer>
+  
+  <!-- ========== JavaScript for Fade-In & Icons ========== -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    const fadeSections = document.querySelectorAll('.fade-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeSections.forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>

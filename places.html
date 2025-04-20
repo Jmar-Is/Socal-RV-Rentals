@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Socal RV Rentals | Places to Go & Festivals</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" 
+    rel="stylesheet">
+  
+  <style>
+    /* ========== Base Font–Size Bump (15% larger text) ========== */
+    html {
+      font-size: 115%;
+    }
+
+    :root {
+      --primary: #00796B;
+      --primary-hover: #00695B;
+      --bg-light: #fafafa;
+      --bg-white: #fff;
+      --text-dark: #444;
+      --text-light: #fff;
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-top: 90px; /* accommodate 90px header */
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ========== Containers & Sections ========== */
+    .section {
+      padding: 4rem 1rem;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ========== Navigation Bar ========== */
+    header {
+      width: 100%;
+      height: 90px; /* increased from 70px */
+      background: linear-gradient(135deg, var(--bg-white), #f9f9f9);
+      border-bottom: 1px solid #e0e0e0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .navbar {
+      max-width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+    .navbar .logo img {
+      height: 80px; /* increased from 60px */
+      width: auto;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-menu a {
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color var(--transition-speed);
+    }
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+    .nav-menu a.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .book-now-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: var(--bg-white);
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background var(--transition-speed);
+    }
+    .book-now-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    /* ========== Hero Section ========== */
+    .hero-places {
+      position: relative;
+      min-height: 50vh;
+      background: url("images/RV Over Water.png") no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-light);
+      padding: 2rem;
+    }
+    .hero-places::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero-places .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-places h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero-places p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    /* ========== Main Destinations Section (Top 5) ========== */
+    .main-destinations h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .destinations-container {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 1200px) {
+      .destinations-container {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    @media (max-width: 1199px) {
+      .destinations-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+    .destination-card {
+      background: #f5f5f5;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform var(--transition-speed);
+    }
+    .destination-card:hover {
+      transform: translateY(-5px);
+    }
+    .dest-image {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+    .dest-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--transition-speed);
+    }
+    .destination-card:hover .dest-image img {
+      transform: scale(1.05);
+    }
+    .dest-info {
+      padding: 1.5rem;
+    }
+    .dest-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .dest-info p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    /* ========== Festivals Section ========== */
+    .festivals-section {
+      background: var(--bg-white);
+    }
+    .festivals-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin: 3rem 0 2rem;
+    }
+    .festivals-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .festival-card {
+      background: #f5f5f5;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform var(--transition-speed);
+    }
+    .festival-card:hover {
+      transform: translateY(-5px);
+    }
+    /* Placeholder card for logo */
+    .festival-card.placeholder {
+      background: transparent;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .festival-card.placeholder img {
+      width: 60%;
+      opacity: 0.5;
+    }
+    .fest-image {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+    .fest-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--transition-speed);
+    }
+    .festival-card:hover .fest-image img {
+      transform: scale(1.05);
+    }
+    .fest-info {
+      padding: 1.5rem;
+    }
+    .fest-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    .fest-info p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    /* ========== Accordion ========== */
+    .accordion-toggle {
+      display: inline-block;
+      background: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      color: var(--bg-white);
+      cursor: pointer;
+      font-weight: 600;
+      transition: background var(--transition-speed);
+      margin-top: 1rem;
+    }
+    .accordion-toggle:hover {
+      background: var(--primary-hover);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease;
+      background: var(--bg-white);
+      border-radius: 4px;
+      padding: 0 1rem;
+      margin-top: 0.5rem;
+    }
+    .accordion-content.open {
+      max-height: 800px;
+      padding: 1rem;
+    }
+    .accordion-content p {
+      margin-bottom: 1rem;
+    }
+    .accordion-content ul {
+      margin: 0.5rem 0;
+      list-style: disc inside;
+    }
+    .accordion-content li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* ========== Other Destinations Section ========== */
+    .other-destinations h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .other-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .other-item {
+      background: var(--bg-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+      transition: transform var(--transition-speed);
+    }
+    .other-item:hover {
+      transform: translateY(-3px);
+    }
+    .other-item h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .other-item p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* ========== Footer ========== */
+    footer {
+      background: var(--bg-white);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #eee;
+    }
+
+    /* ========== Fade‑In Animation ========== */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 768px) {
+      .hero-places h1 {
+        font-size: 2rem;
+      }
+      .destinations-container,
+      .festivals-container,
+      .other-grid {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========== Header / Navbar ========== -->
+  <header>
+    <div class="navbar container">
+      <div class="logo">
+        <a href="index.html"><img src="images/Logo.png" alt="Socal RV Rentals Logo"></a>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="places.html" class="active">Places to Go</a></li>
+        <li>
+          <a href="https://checkout.wheelbasepro.com/reserve?owner_id=518075" target="_blank" class="book-now-btn">
+            Book Now
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========== Hero Section ========== -->
+  <section class="hero-places section fade-section" id="hero-places">
+    <div class="hero-content container">
+      <h1>Places and RV Friendly Events to Attend</h1>
+      <p>
+        California is an RV adventurer’s dream! Explore magnificent national parks and discover festivals and rave events with fantastic RV camping options.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== Main Destinations Section (Top 5) ========== -->
+  <section class="main-destinations section fade-section" id="main-destinations">
+    <div class="container">
+      <h2>Top 5 Must-Visit RV Destinations</h2>
+      <div class="destinations-container">
+        <!-- Destination 1: Yosemite -->
+        <div class="destination-card">
+          <div class="dest-image">
+            <img src="images/yosemite.jpg" alt="Yosemite National Park">
+          </div>
+          <div class="dest-info">
+            <h3>Yosemite National Park</h3>
+            <p>
+              Majestic granite cliffs, waterfalls, and giant sequoias – a true paradise in the Sierra Nevada.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Central California, Sierra Nevada mountains.</p>
+              <p><strong>Main Attractions:</strong> Half Dome, El Capitan, Yosemite Falls, Glacier Point.</p>
+              <p><strong>RV Sites:</strong></p>
+              <ul>
+                <li>Upper Pines Campground – Scenic valley views.</li>
+                <li>Wawona Campground – Among giant sequoias.</li>
+                <li>Yosemite Lakes RV Resort – Full hookups near the park entrance.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Destination 2: Joshua Tree -->
+        <div class="destination-card">
+          <div class="dest-image">
+            <img src="images/Joshua Tree.webp" alt="Joshua Tree National Park">
+          </div>
+          <div class="dest-info">
+            <h3>Joshua Tree National Park</h3>
+            <p>
+              A surreal desert landscape filled with iconic Joshua trees and rugged boulder formations.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Southeastern California, near Palm Springs.</p>
+              <p><strong>Main Attractions:</strong> Cholla Cactus Garden, Skull Rock, Keys View.</p>
+              <p><strong>RV Sites:</strong></p>
+              <ul>
+                <li>Jumbo Rocks Campground – Scenic boulder fields.</li>
+                <li>Black Rock Campground – Charming and convenient.</li>
+                <li>Joshua Tree Lake RV & Campground – Private site with amenities.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Destination 3: Redwood Parks -->
+        <div class="destination-card">
+          <div class="dest-image">
+            <img src="images/Redwood.jpeg" alt="Redwood National & State Parks">
+          </div>
+          <div class="dest-info">
+            <h3>Redwood National &amp; State Parks</h3>
+            <p>
+              Roam among ancient coastal redwoods and experience some of the world’s tallest trees.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Northern California, near the Oregon border.</p>
+              <p><strong>Main Attractions:</strong> Fern Canyon, scenic coastal vistas.</p>
+              <p><strong>RV Sites:</strong></p>
+              <ul>
+                <li>Jedediah Smith Campground – Amid old-growth redwoods.</li>
+                <li>Elk Prairie Campground – Serene and scenic.</li>
+                <li>Kamp Klamath RV Park – Full-service RV hookups.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Destination 4: Big Sur -->
+        <div class="destination-card">
+          <div class="dest-image">
+            <img src="images/Big Sur.webp" alt="Big Sur">
+          </div>
+          <div class="dest-info">
+            <h3>Big Sur</h3>
+            <p>
+              An iconic coastal stretch with breathtaking views, rugged cliffs, and a relaxed atmosphere.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Central California coast along Highway 1.</p>
+              <p><strong>Main Attractions:</strong> Bixby Bridge, McWay Falls, Pfeiffer Beach.</p>
+              <p><strong>RV Sites:</strong></p>
+              <ul>
+                <li>Pfeiffer Big Sur State Park – Nestled among redwoods.</li>
+                <li>Kirk Creek Campground – Stunning ocean views.</li>
+                <li>Riverside Campground – Private site with amenities.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Destination 5: Death Valley -->
+        <div class="destination-card">
+          <div class="dest-image">
+            <img src="images/Death Valley.jpg" alt="Death Valley National Park">
+          </div>
+          <div class="dest-info">
+            <h3>Death Valley National Park</h3>
+            <p>
+              Experience vast, dramatic desert landscapes—from salt flats to sweeping dunes.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Eastern California, near Nevada.</p>
+              <p><strong>Main Attractions:</strong> Badwater Basin, Zabriskie Point, Mesquite Flat Sand Dunes.</p>
+              <p><strong>RV Sites:</strong></p>
+              <ul>
+                <li>Furnace Creek Campground – Convenient with amenities.</li>
+                <li>Stovepipe Wells Campground – Primitive yet scenic.</li>
+                <li>Panamint Springs Resort – Private RV service available.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RV-Friendly Festivals Section ========== -->
+  <section class="festivals-section section fade-section" id="festivals">
+    <div class="container">
+      <h2>RV-Friendly Festivals &amp; Rave Events</h2>
+      <div class="festivals-container">
+        <!-- Festival 1: Coachella -->
+        <div class="festival-card">
+          <div class="fest-image">
+            <img src="images/Coachella.jpeg" alt="Coachella Valley Music and Arts Festival">
+          </div>
+          <div class="fest-info">
+            <h3>Coachella Valley Music and Arts Festival</h3>
+            <p>
+              An iconic festival in Indio, CA – enjoy world-class music, immersive art installations, and RV camping in the desert.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Indio, California.</p>
+              <p><strong>Highlights:</strong> Multi-stage performances, immersive art, gourmet food trucks.</p>
+              <p><strong>RV Tips:</strong> Reserve your spot early and prepare for desert conditions.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Festival 2: EDC Las Vegas -->
+        <div class="festival-card">
+          <div class="fest-image">
+            <img src="images/EDC.jpeg" alt="EDC Las Vegas">
+          </div>
+          <div class="fest-info">
+            <h3>EDC Las Vegas</h3>
+            <p>
+              An electrifying experience featuring world-class DJs and vibrant art that draws RV campers to dedicated camping areas.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Las Vegas, Nevada.</p>
+              <p><strong>Highlights:</strong> Massive stages, stunning visuals, immersive light shows.</p>
+              <p><strong>RV Tips:</strong> Research partnered campgrounds and book well in advance.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Festival 3: Lightning in a Bottle -->
+        <div class="festival-card">
+          <div class="fest-image">
+            <img src="images/LIB.jpg" alt="Lightning in a Bottle">
+          </div>
+          <div class="fest-info">
+            <h3>Lightning in a Bottle</h3>
+            <p>
+              A transformative blend of music, art, and wellness in the California desert – RV camping is a popular choice.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Typically held in the California desert.</p>
+              <p><strong>Highlights:</strong> Interactive art installations, holistic workshops, vibrant music.</p>
+              <p><strong>RV Tips:</strong> Secure your spot early as campsites fill up quickly.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Festival 4: Burning Man -->
+        <div class="festival-card">
+          <div class="fest-image">
+            <img src="images/Burning Man.jpg" alt="Burning Man">
+          </div>
+          <div class="fest-info">
+            <h3>Burning Man</h3>
+            <p>
+              A cultural phenomenon in Nevada’s Black Rock Desert that attracts RV enthusiasts for its communal art and immersive experiences.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Black Rock Desert, Nevada.</p>
+              <p><strong>Highlights:</strong> Radical self-expression, community art, immersive camping.</p>
+              <p><strong>RV Tips:</strong> Plan extensively—water, supplies, and waste management are key.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Festival 5: Psychedelic Circus USA -->
+        <div class="festival-card">
+          <div class="fest-image">
+            <img src="images/Psychedelic Circus.jpg" alt="Psychedelic Circus USA">
+          </div>
+          <div class="fest-info">
+            <h3>Psychedelic Circus USA</h3>
+            <p>
+              Embrace a Burner‑style experience along the Utah/Nevada border with tribal psytrance, workshops, and off‑grid camping.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Utah/Nevada border (rotating).</p>
+              <p><strong>Highlights:</strong> Tribal psytrance, immersive workshops, off‑grid vibes.</p>
+              <p><strong>RV Tips:</strong> Camping is mandatory; RVs are encouraged.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Festival 6: Gem & Jam Festival -->
+        <div class="festival-card">
+          <div class="fest-image">
+            <img src="images/Gem & Jam.jpg" alt="Gem &amp; Jam Festival">
+          </div>
+          <div class="fest-info">
+            <h3>Gem &amp; Jam Festival</h3>
+            <p>
+              A fusion of music, crystals, art, and desert magic during the Tucson Gem Show – perfect for RV camping.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Tucson, Arizona.</p>
+              <p><strong>Highlights:</strong> Artsy vibe with electronic and jam band performances.</p>
+              <p><strong>RV Tips:</strong> Options available with or without hookups.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Festival 7: Nocturnal Wonderland -->
+        <div class="festival-card">
+          <div class="fest-image">
+            <img src="images/Nocturnal Wonderland.jpeg" alt="Nocturnal Wonderland">
+          </div>
+          <div class="fest-info">
+            <h3>Nocturnal Wonderland</h3>
+            <p>
+              Dive into an immersive rave experience with dynamic light shows and interactive installations – a favorite with the RV community.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Venue varies in California; check current event details.</p>
+              <p><strong>Highlights:</strong> Immersive rave culture, dynamic visuals, energetic party vibe.</p>
+              <p><strong>RV Tips:</strong> Book your camping space early to ensure a spot.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Placeholder for logo in middle column -->
+        <div class="festival-card placeholder">
+          <img src="images/Logo.png" alt="Logo Placeholder">
+        </div>
+        <!-- Festival 8: Cascade Equinox Festival (now rightmost) -->
+        <div class="festival-card">
+          <div class="fest-image">
+            <img src="images/Cascade.jpg" alt="Cascade Equinox Festival">
+          </div>
+          <div class="fest-info">
+            <h3>Cascade Equinox Festival</h3>
+            <p>
+              Enjoy a conscious camping experience featuring electronic music, jam bands, yoga, and fire shows in Redmond, Oregon.
+            </p>
+            <span class="accordion-toggle">Learn More</span>
+            <div class="accordion-content">
+              <p><strong>Location:</strong> Redmond, Oregon.</p>
+              <p><strong>Highlights:</strong> Music, wellness workshops, and fire performances.</p>
+              <p><strong>RV Tips:</strong> Designated RV camping passes available—book early.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Other Destinations Section ========== -->
+  <section class="other-destinations section fade-section">
+    <div class="container">
+      <h2>16 More California RV Gems</h2>
+      <div class="other-grid">
+        <div class="other-item">
+          <h4>Sequoia National Park</h4>
+          <p>Explore the world’s largest trees and rugged mountain scenery.</p>
+        </div>
+        <div class="other-item">
+          <h4>Lake Tahoe</h4>
+          <p>An alpine lake offering water sports and winter adventures.</p>
+        </div>
+        <div class="other-item">
+          <h4>Pismo Beach</h4>
+          <p>Coastal charm with dunes, clamming, and mesmerizing sunsets.</p>
+        </div>
+        <div class="other-item">
+          <h4>Malibu</h4>
+          <p>Iconic beaches with vibrant surf culture and stunning vistas.</p>
+        </div>
+        <div class="other-item">
+          <h4>Santa Cruz</h4>
+          <p>Lively boardwalks and a laid-back surf lifestyle.</p>
+        </div>
+        <div class="other-item">
+          <h4>Napa Valley</h4>
+          <p>World-famous wine country with charming vineyards.</p>
+        </div>
+        <div class="other-item">
+          <h4>Mojave Desert</h4>
+          <p>Stunning desert landscapes with unique rock formations.</p>
+        </div>
+        <div class="other-item">
+          <h4>Channel Islands NP</h4>
+          <p>Remote islands rich in marine life and rugged coastlines.</p>
+        </div>
+        <div class="other-item">
+          <h4>Anza-Borrego</h4>
+          <p>California’s largest state park, celebrated for its wildflowers.</p>
+        </div>
+        <div class="other-item">
+          <h4>Shasta-Trinity NF</h4>
+          <p>Expansive forests, alpine lakes, and endless outdoor adventures.</p>
+        </div>
+        <div class="other-item">
+          <h4>Lassen Volcanic NP</h4>
+          <p>Unique geothermal features and serene natural landscapes.</p>
+        </div>
+        <div class="other-item">
+          <h4>Orange County Beaches</h4>
+          <p>Iconic coastal vibes in one of California’s liveliest regions.</p>
+        </div>
+        <div class="other-item">
+          <h4>Santa Barbara</h4>
+          <p>Rich in Spanish heritage and coastal elegance.</p>
+        </div>
+        <div class="other-item">
+          <h4>Monterey</h4>
+          <p>Home to a renowned aquarium and scenic Cannery Row.</p>
+        </div>
+        <div class="other-item">
+          <h4>Santa Monica Mtns</h4>
+          <p>Breathtaking mountain landscapes and hiking trails.</p>
+        </div>
+        <div class="other-item">
+          <h4>Point Reyes National Seashore</h4>
+          <p>A stunning coastal park with dramatic cliffs, expansive beaches, and scenic hiking trails.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer class="fade-section">
+    <div class="container">
+      <p>&copy; 2025 Socal RV Rentals. Adventure awaits around every turn!</p>
+    </div>
+  </footer>
+
+  <!-- ========== JavaScript for Fade‑In & Accordion ========== -->
+  <script>
+    // Fade‑in on scroll
+    document.querySelectorAll('.fade-section, .destination-card, .festival-card, .other-item')
+      .forEach(el => {
+        new IntersectionObserver(entries => {
+          if (entries[0].isIntersecting) el.classList.add('fade-in');
+        }, { threshold: 0.1 }).observe(el);
+      });
+
+    // Accordion toggles
+    document.querySelectorAll('.accordion-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        toggle.nextElementSibling.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
