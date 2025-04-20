@@ -74,17 +74,63 @@
       max-width: 1200px; margin: 0 auto;
     }
     .navbar .logo img { height: 80px; width: auto; }
-    .nav-menu { display: flex; list-style: none; gap: 2rem; }
+    
+    /* Normal Nav Menu */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
     .nav-menu a {
-      font-weight: 500; transition: color 0.3s ease;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
     .nav-menu a:hover { color: var(--primary); }
     .book-now-btn {
-      padding: 0.5rem 1rem; border-radius: 4px;
-      background: var(--primary); color: var(--bg-white);
-      font-weight: 600; transition: background 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      background: var(--primary);
+      color: var(--bg-white);
+      font-weight: 600;
+      transition: background 0.3s ease;
     }
     .book-now-btn:hover { background: var(--primary-hover); }
+
+    /* Hamburger icon for mobile */
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+      .nav-menu {
+        display: none; /* Hide the regular menu */
+        flex-direction: column;
+        background-color: var(--bg-white);
+        position: absolute;
+        top: 90px;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .nav-menu li {
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+      }
+
+      /* Show hamburger icon on mobile */
+      .hamburger {
+        display: block;
+      }
+
+      .hamburger.active + .nav-menu {
+        display: flex; /* Show the menu when hamburger is active */
+      }
+    }
 
     /* ========== Floating Sidebar Logo ========== */
     .floating-logo {
@@ -294,7 +340,13 @@
       <div class="logo">
         <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Logo"></a>
       </div>
-      <ul class="nav-menu">
+      
+      <!-- Hamburger Icon for Mobile -->
+      <div class="hamburger" id="hamburger-icon">
+        &#9776;
+      </div>
+
+      <ul class="nav-menu" id="nav-menu">
         <li><a href="#hero">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -449,6 +501,13 @@
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 4000);
+
+    // Toggle the hamburger menu on mobile
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const navMenu = document.getElementById('nav-menu');
+    hamburgerIcon.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
