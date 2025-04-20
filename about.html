@@ -17,7 +17,6 @@
   <style>
     /* ========== Base Font-Size Bump (15% larger text) ========== */
     html { font-size: 115%; }
-
     /* ========== CSS Variables ========== */
     :root {
       --primary: #00796B;
@@ -27,7 +26,6 @@
       --text-dark: #444;
       --text-light: #fff;
     }
-    
     /* ========== Global Styles ========== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -38,21 +36,16 @@
       padding-top: 90px; /* space for 90px header */
     }
     a { text-decoration: none; color: inherit; }
-    
     /* ========== Section Layout ========== */
     .section { width: 100%; padding: 4rem 1rem; }
     .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-    
     /* ========== Navigation Bar ========== */
     header {
       width: 100%;
-      height: 90px; /* increased from 70px */
+      height: 90px;
       background: linear-gradient(135deg, var(--bg-white), #f9f9f9);
       border-bottom: 1px solid #e0e0e0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; z-index: 1000;
     }
     .navbar {
       height: 100%;
@@ -80,17 +73,12 @@
       transition: background 0.3s ease;
     }
     .book-now-btn:hover { background: var(--primary-hover); }
-
     /* ========== Floating Logo (bottom-right) ========== */
     .floating-logo {
-      position: fixed;
-      bottom: 0.5rem;
-      right: 0.5rem;
-      opacity: 0.7;
-      z-index: 1001;
+      position: fixed; bottom: 0.5rem; right: 0.5rem;
+      opacity: 0.7; z-index: 1001;
     }
     .floating-logo img { height: 102px; width: auto; }
-    
     /* ========== Hero Section: Our Story ========== */
     .hero-about {
       background: url("https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-10.jpg") no-repeat center center;
@@ -99,112 +87,64 @@
       color: var(--text-light);
       position: relative;
       min-height: 50vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       padding: 2rem;
     }
     .hero-about::before {
       content: "";
-      position: absolute;
-      top: 0; left: 0;
+      position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.4);
       z-index: 0;
     }
     .hero-about .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
+      position: relative; z-index: 1;
+      max-width: 800px; margin: 0 auto;
     }
-    .hero-about h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .hero-about p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-    }
-    
+    .hero-about h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero-about p { font-size: 1.1rem; line-height: 1.5; }
     /* ========== Our Team Section: Meet the Owners ========== */
-    .our-team {
-      background: var(--bg-white);
-      text-align: center;
-    }
-    .our-team h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
+    .our-team { background: var(--bg-white); text-align: center; }
+    .our-team h2 { font-size: 2rem; margin-bottom: 2rem; }
     .team-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      justify-content: center; margin-top: 2rem;
     }
     .team-member {
-      flex: 1 1 500px; /* increased from 400px */
-      max-width: 500px;
-      background: #f5f5f5;
-      border-radius: 8px;
-      overflow: hidden;
+      flex: 1 1 500px; max-width: 500px;
+      background: #f5f5f5; border-radius: 8px; overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transform: translateY(20px);
-      opacity: 0;
+      transform: translateY(20px); opacity: 0;
       transition: transform 0.8s ease, opacity 0.8s ease;
     }
-    .member-image {
-      width: 100%;
-      height: 375px; /* increased from 300px */
-      overflow: hidden;
-    }
+    .member-image { width: 100%; height: 375px; overflow: hidden; }
     .member-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
     }
-    .member-info {
-      padding: 1.5rem;
-    }
+    .member-info { padding: 1.5rem; }
     .member-info h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
+      font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary);
     }
-    .member-info p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #555;
-    }
+    .member-info p { font-size: 1rem; line-height: 1.6; color: #555; }
     .team-member:hover {
-      transform: scale(1.03);
-      transition: transform 0.3s ease;
+      transform: scale(1.03); transition: transform 0.3s ease;
     }
-    
     /* ========== Fade-In Helpers ========== */
-    .fade-section,
-    .team-member {
-      opacity: 0;
-      transform: translateY(20px);
+    .fade-section, .team-member {
+      opacity: 0; transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
     .fade-in {
       opacity: 1 !important;
       transform: translateY(0) !important;
     }
-    
     /* ========== Footer ========== */
     footer {
-      background: var(--bg-white);
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #777;
+      background: var(--bg-white); text-align: center;
+      padding: 1rem; font-size: 0.9rem; color: #777;
       border-top: 1px solid #eee;
     }
-    
     /* ========== Responsive ========== */
     @media (max-width: 768px) {
       .hero-about h1 { font-size: 2rem; }
@@ -213,14 +153,34 @@
   </style>
 </head>
 <body>
-  <!-- ← Here’s the only added line: -->
-  <div id="site-nav"></div>
-
   <!-- Floating logo -->
   <div class="floating-logo">
-    <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Socal RV Rentals Logo">
+    <img
+      src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png"
+      alt="Socal RV Rentals Logo"
+    >
   </div>
 
+  <!-- ========== Header / Navbar ========== -->
+  <header>
+    <div class="navbar container">
+      <div class="logo">
+        <a href="index.html">
+          <img
+            src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png"
+            alt="Socal RV Rentals Logo"
+          >
+        </a>
+      </div>
+
+      <!-- ← Added hamburger for mobile toggle -->
+      <div class="hamburger" id="hamburger-icon">&#9776;</div>
+
+      <!-- ← This UL stays, but we inject the LIs via fetch() -->
+      <ul class="nav-menu" id="nav-menu"></ul>
+    </div>
+  </header>
+  
   <!-- ========== Hero Section: Our Story ========== -->
   <section class="hero-about fade-section">
     <div class="hero-content">
@@ -241,7 +201,10 @@
         <!-- Ivan's Card -->
         <div class="team-member">
           <div class="member-image">
-            <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Ivan%20Image.jpg" alt="Ivan Gomez">
+            <img
+              src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Ivan%20Image.jpg"
+              alt="Ivan Gomez"
+            >
           </div>
           <div class="member-info">
             <h3>Ivan Gomez</h3>
@@ -253,7 +216,10 @@
         <!-- Liz's Card -->
         <div class="team-member">
           <div class="member-image">
-            <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Liz%20Image.webp" alt="Elizabeth Moran">
+            <img
+              src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Liz%20Image.webp"
+              alt="Elizabeth Moran"
+            >
           </div>
           <div class="member-info">
             <h3>Elizabeth Moran</h3>
@@ -287,25 +253,23 @@
     });
   </script>
 
-  <!-- ← And here’s the new nav‑loader script: -->
+  <!-- ← Loader script to inject nav-items.html into the UL -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      fetch('/nav.html')
+      fetch('/nav-items.html')
         .then(res => res.text())
-        .then(html => {
-          document.getElementById('site-nav').innerHTML = html;
-          // re‑attach your hamburger toggle
+        .then(itemsHtml => {
+          const menu = document.getElementById('nav-menu');
+          menu.innerHTML = itemsHtml;
+
+          // re‑attach your mobile toggle
           const hamburger = document.getElementById('hamburger-icon');
-          const navMenu   = document.getElementById('nav-menu');
           hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            menu.classList.toggle('active');
           });
         })
-        .catch(err => console.error('Failed to load nav:', err));
+        .catch(err => console.error('Couldn’t load nav items:', err));
     });
   </script>
-</body>
-</html>
-
 </body>
 </html>
