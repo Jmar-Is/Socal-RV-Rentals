@@ -2,24 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Responsive Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Socal RV Rentals | Home</title>
 
-  <!-- Open Graph Meta Tags for correct link preview -->
-  <meta property="og:title" content="Socal RV Rentals" />
-  <meta property="og:description" content="Take the road less traveled with Socal RV Rentals—your ticket to adventure." />
-  <meta property="og:url" content="https://yourdomain.com/" />
-  <meta property="og:image" content="https://yourdomain.com/images/Logo.png" />
-  <meta property="og:image:width" content="800" />
-  <meta property="og:image:height" content="600" />
-  <meta property="og:image:type" content="image/png" />
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Socal RV Rentals" />
+<meta property="og:description" content="Take the road less traveled with Socal RV Rentals—your ticket to adventure." />
+<meta property="og:url" content="https://www.socal-rvrentals.com/" />
+<meta property="og:image" content="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="628" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:alt" content="SoCal RV Rentals Logo" />
 
-  <!-- Twitter Card Meta Tags (Optional) -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Socal RV Rentals" />
-  <meta name="twitter:description" content="Take the road less traveled with Socal RV Rentals—your ticket to adventure." />
-  <meta name="twitter:image" content="https://yourdomain.com/images/Logo.png" />
+  <meta property="og:type" content="website" />
+
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Socal RV Rentals" />
+<meta name="twitter:description" content="Take the road less traveled with Socal RV Rentals—your ticket to adventure." />
+<meta name="twitter:image" content="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" />
+<meta name="twitter:image:alt" content="SoCal RV Rentals Logo" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,9 +32,6 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" 
     rel="stylesheet"
   >
-
-  <!-- Instafeed.js for optional Instagram Feed -->
-  <script src="https://cdn.jsdelivr.net/npm/instafeed.js@2"></script>
 
   <style>
     /* ========== Base Font-Size Bump (15% larger text) ========== */
@@ -53,7 +54,7 @@
       color: var(--text-dark);
       background: var(--bg-light);
       line-height: 1.6;
-      padding-top: 90px; /* space for fixed header */
+      padding-top: 90px;
     }
     a { text-decoration: none; color: inherit; }
 
@@ -74,17 +75,71 @@
       max-width: 1200px; margin: 0 auto;
     }
     .navbar .logo img { height: 80px; width: auto; }
-    .nav-menu { display: flex; list-style: none; gap: 2rem; }
+
+    /* Regular Nav Menu */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
     .nav-menu a {
-      font-weight: 500; transition: color 0.3s ease;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
     .nav-menu a:hover { color: var(--primary); }
     .book-now-btn {
-      padding: 0.5rem 1rem; border-radius: 4px;
-      background: var(--primary); color: var(--bg-white);
-      font-weight: 600; transition: background 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      background: var(--primary);
+      color: var(--bg-white);
+      font-weight: 600;
+      transition: background 0.3s ease;
     }
     .book-now-btn:hover { background: var(--primary-hover); }
+
+    /* Hamburger icon for mobile */
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 768px) {
+  /* Hide the regular nav‑menu until tapped */
+  .nav-menu {
+    display: none;              /* start hidden */
+    flex-direction: column;
+    position: absolute;
+    top: 90px;                  /* right below your header */
+    right: 1rem;                /* align under the hamburger */
+    background: var(--bg-white);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  /* When hamburger is active, show it as a dropdown */
+  .nav-menu.active {
+    display: flex;
+  }
+
+  /* Tidy up each link */
+  .nav-menu li {
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: right;
+  }
+  .nav-menu li:last-child {
+    border-bottom: none;
+  }
+
+  /* Keep hamburger visible */
+  .hamburger {
+    display: block;
+  }
+}
 
     /* ========== Floating Sidebar Logo ========== */
     .floating-logo {
@@ -285,16 +340,22 @@
 <body>
   <!-- Floating sidebar logo -->
   <div class="floating-logo">
-    <img src="images/Logo.png" alt="Socal RV Rentals Logo">
+    <img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Socal RV Rentals Logo">
   </div>
 
   <!-- ========== Header / Navbar ========== -->
   <header>
     <div class="navbar container">
       <div class="logo">
-        <a href="index.html"><img src="images/Logo.png" alt="Logo"></a>
+        <a href="index.html"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/Logo.png" alt="Logo"></a>
       </div>
-      <ul class="nav-menu">
+      
+      <!-- Hamburger Icon for Mobile -->
+      <div class="hamburger" id="hamburger-icon">
+        &#9776;
+      </div>
+
+      <ul class="nav-menu" id="nav-menu">
         <li><a href="#hero">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -311,16 +372,16 @@
   <!-- ========== Hero Carousel Section ========== -->
   <section class="hero section" id="hero">
     <div class="hero-slider">
-      <div class="slide active"><img src="images/rv-photo-1.jpg" alt="RV Photo 1"></div>
-      <div class="slide"><img src="images/rv-photo-2.jpg" alt="RV Photo 2"></div>
-      <div class="slide"><img src="images/rv-photo-3.jpg" alt="RV Photo 3"></div>
-      <div class="slide"><img src="images/rv-photo-4.jpg" alt="RV Photo 4"></div>
-      <div class="slide"><img src="images/rv-photo-5.jpeg" alt="RV Photo 5"></div>
-      <div class="slide"><img src="images/rv-photo-6.jpeg" alt="RV Photo 6"></div>
-      <div class="slide"><img src="images/rv-photo-7.jpeg" alt="RV Photo 7"></div>
-      <div class="slide"><img src="images/rv-photo-8.jpeg" alt="RV Photo 8"></div>
-      <div class="slide"><img src="images/rv-photo-9.jpeg" alt="RV Photo 9"></div>
-      <div class="slide"><img src="images/rv-photo-11.jpg" alt="RV Photo 11"></div>
+      <div class="slide active"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-1.jpg" alt="RV Photo 1"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-2.jpg" alt="RV Photo 2"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-3.jpg" alt="RV Photo 3"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-4.jpg" alt="RV Photo 4"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-5.jpeg" alt="RV Photo 5"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-6.jpeg" alt="RV Photo 6"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-7.jpeg" alt="RV Photo 7"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-8.jpeg" alt="RV Photo 8"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-9.jpeg" alt="RV Photo 9"></div>
+      <div class="slide"><img src="https://media.githubusercontent.com/media/Jmar-Is/Socal-RV-Rentals/refs/heads/main/Images/rv-photo-11.jpg" alt="RV Photo 11"></div>
     </div>
     <div class="hero-overlay">
       <div class="hero-content">
@@ -449,6 +510,14 @@
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
     }, 4000);
+
+    // Toggle the hamburger menu on mobile
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const navMenu = document.getElementById('nav-menu');
+    hamburgerIcon.addEventListener('click', () => {
+      hamburgerIcon.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
